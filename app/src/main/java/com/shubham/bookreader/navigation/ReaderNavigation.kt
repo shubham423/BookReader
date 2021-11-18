@@ -1,6 +1,7 @@
 package com.shubham.bookreader.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -8,6 +9,7 @@ import com.shubham.bookreader.screens.ReaderSplashScreen
 import com.shubham.bookreader.screens.home.ReaderHomeScreen
 import com.shubham.bookreader.screens.login.ReaderLoginScreen
 
+@ExperimentalComposeUiApi
 @Composable
 fun ReaderNavigation() {
     val navController = rememberNavController()
