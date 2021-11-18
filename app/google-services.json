@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "726936973519",
+    "firebase_url": "https://demo3-e03ce-default-rtdb.firebaseio.com",
+    "project_id": "demo3-e03ce",
+    "storage_bucket": "demo3-e03ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726936973519:android:2823611682b798f7c2c7ba",
+        "android_client_info": {
+          "package_name": "com.shubham.bookreader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726936973519-h0k773a0lqhlbueskcngqnfjmrk4so16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDml_7idSEtVoiBL82e5cqF1OAjE73EYwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726936973519-h0k773a0lqhlbueskcngqnfjmrk4so16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
