@@ -27,10 +27,14 @@ import androidx.navigation.NavController
 import com.shubham.bookreader.components.EmailInput
 import com.shubham.bookreader.components.PasswordInput
 import com.shubham.bookreader.components.ReaderLogo
+import com.shubham.bookreader.navigation.ReaderScreens
 
 @ExperimentalComposeUiApi
 @Composable
-fun ReaderLoginScreen(navController: NavController) {
+fun ReaderLoginScreen(
+    navController: NavController,
+    viewModel: LoginScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
     val showLoginForm = rememberSaveable { mutableStateOf(true) }
 
     Surface(modifier = Modifier.fillMaxSize()) {
@@ -38,11 +42,16 @@ fun ReaderLoginScreen(navController: NavController) {
             verticalArrangement = Arrangement.Top) {
             ReaderLogo()
             if (showLoginForm.value) UserForm(loading = false, isCreateAccount = false){ email, password ->
-                //Todo FB login
+                viewModel.signInWithEmailAndPassword(email, password){
+                    navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+
+                }
             }
             else {
                 UserForm(loading = false, isCreateAccount = true){ email, password ->
-                    //Todo: create FB account
+                    viewModel.createUserWithEmailAndPassword(email, password) {
+                        navController.navigate(ReaderScreens.ReaderHomeScreen.name)
+                    }
                 }
             }
 
@@ -150,3 +159,6 @@ fun SubmitButton(textId: String,
     }
 
 }
+
+
+

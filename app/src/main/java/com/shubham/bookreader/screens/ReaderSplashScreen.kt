@@ -61,8 +61,6 @@ fun ReaderSplashScreen(navController: NavController) {
                 style = MaterialTheme.typography.h5,
                 color = Color.LightGray)
 
-
-
         }
 
 

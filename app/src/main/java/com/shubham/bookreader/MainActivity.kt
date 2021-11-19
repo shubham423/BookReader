@@ -46,7 +46,6 @@ fun ReaderApp() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ReaderNavigation()
-
         }
     }
 
