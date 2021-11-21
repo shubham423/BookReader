@@ -2,12 +2,15 @@ package com.shubham.bookreader.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.shubham.bookreader.screens.ReaderSplashScreen
 import com.shubham.bookreader.screens.home.ReaderHomeScreen
 import com.shubham.bookreader.screens.login.ReaderLoginScreen
+import com.shubham.bookreader.screens.search.BooksSearchViewModel
+import com.shubham.bookreader.screens.search.SearchScreen
 
 
 @ExperimentalComposeUiApi
@@ -26,6 +29,12 @@ fun ReaderNavigation() {
 
         composable(ReaderScreens.ReaderHomeScreen.name) {
             ReaderHomeScreen(navController = navController)
+        }
+
+        composable(ReaderScreens.SearchScreen.name) {
+            val searchViewModel = hiltViewModel<BooksSearchViewModel>()
+
+            SearchScreen(navController = navController, viewModel = searchViewModel)
         }
 
     }

@@ -1,29 +1,21 @@
 package com.shubham.bookreader.screens.home
 
 import android.util.Log
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.StarBorder
-import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
 import com.google.firebase.auth.FirebaseAuth
 import com.shubham.bookreader.components.FABContent
 import com.shubham.bookreader.components.ListCard
@@ -35,12 +27,12 @@ import com.shubham.bookreader.navigation.ReaderScreens
 @Composable
 fun ReaderHomeScreen(navController: NavController) {
     Scaffold(topBar = {
-        ReaderAppBar(title = "A.Reader", navController = navController )
+        ReaderAppBar(title = "A.Reader", navController = navController)
 
 
     },
         floatingActionButton = {
-            FABContent{
+            FABContent {
                 navController.navigate(ReaderScreens.SearchScreen.name)
             }
 
@@ -71,10 +63,12 @@ fun HomeContent(navController: NavController) {
     val email = FirebaseAuth.getInstance().currentUser?.email
     val currentUserName = if (!email.isNullOrEmpty())
         FirebaseAuth.getInstance().currentUser?.email?.split("@")
-            ?.get(0)else
+            ?.get(0) else
         "N/A"
-    Column(Modifier.padding(2.dp),
-        verticalArrangement = Arrangement.Top) {
+    Column(
+        Modifier.padding(2.dp),
+        verticalArrangement = Arrangement.Top
+    ) {
         Row(modifier = Modifier.align(alignment = Alignment.Start)) {
             TitleSection(label = "Your reading \n " + " activity right now...")
             Spacer(modifier = Modifier.fillMaxWidth(0.7f))
@@ -88,25 +82,30 @@ fun HomeContent(navController: NavController) {
                         }
                         .size(45.dp),
                     tint = MaterialTheme.colors.secondaryVariant)
-                Text(text = currentUserName!!,
+                Text(
+                    text = currentUserName!!,
                     modifier = Modifier.padding(2.dp),
                     style = MaterialTheme.typography.overline,
                     color = Color.Red,
                     fontSize = 15.sp,
                     maxLines = 1,
-                    overflow = TextOverflow.Clip)
+                    overflow = TextOverflow.Clip
+                )
                 Divider()
             }
 
 
         }
 
-        ReadingRightNowArea(listOfBooks = listOfBooks,
-            navController =navController )
+        ReadingRightNowArea(
+            listOfBooks = listOfBooks,
+            navController = navController
+        )
         TitleSection(label = "Reading List")
-        BoolListArea(listOfBooks = listOfBooks,
-            navController = navController)
-
+        BoolListArea(
+            listOfBooks = listOfBooks,
+            navController = navController
+        )
 
 
     }
@@ -114,27 +113,32 @@ fun HomeContent(navController: NavController) {
 }
 
 @Composable
-fun BoolListArea(listOfBooks: List<MBook>,
-                 navController: NavController) {
+fun BoolListArea(
+    listOfBooks: List<MBook>,
+    navController: NavController
+) {
 
-    HorizontalScrollableComponent(listOfBooks){
+    HorizontalScrollableComponent(listOfBooks) {
         Log.d("TAG", "BoolListArea: $it")
         //Todo: on card clicked navigate to details
     }
 
 
-
 }
 
 @Composable
-fun HorizontalScrollableComponent(listOfBooks: List<MBook>,
-                                  onCardPressed: (String) -> Unit) {
+fun HorizontalScrollableComponent(
+    listOfBooks: List<MBook>,
+    onCardPressed: (String) -> Unit
+) {
     val scrollState = rememberScrollState()
 
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .heightIn(280.dp)
-        .horizontalScroll(scrollState)) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(280.dp)
+            .horizontalScroll(scrollState)
+    ) {
 
         for (book in listOfBooks) {
             ListCard(book) {
@@ -150,14 +154,15 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>,
 
 
 @Composable
-fun ReadingRightNowArea(listOfBooks: List<MBook>,
-                        navController: NavController) {
+fun ReadingRightNowArea(
+    listOfBooks: List<MBook>,
+    navController: NavController
+) {
 
-    HorizontalScrollableComponent(listOfBooks){
+    HorizontalScrollableComponent(listOfBooks) {
         Log.d("TAG", "BoolListArea: $it")
         //Todo: on card clicked navigate to details
     }
-
 
 
 }
