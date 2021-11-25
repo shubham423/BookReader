@@ -16,8 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.shubham.bookreader.navigation.ReaderNavigation
 import com.shubham.bookreader.ui.theme.BookReaderTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalComposeUiApi
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
