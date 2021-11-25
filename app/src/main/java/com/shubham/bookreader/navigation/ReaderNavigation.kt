@@ -10,9 +10,12 @@ import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
 import com.shubham.bookreader.screens.ReaderSplashScreen
 import com.shubham.bookreader.screens.details.BookDetailsScreen
+import com.shubham.bookreader.screens.home.HomeScreenViewModel
+import com.shubham.bookreader.screens.home.ReaderHomeScreen
 import com.shubham.bookreader.screens.login.ReaderLoginScreen
 import com.shubham.bookreader.screens.search.BooksSearchViewModel
 import com.shubham.bookreader.screens.search.SearchScreen
+import com.shubham.bookreader.screens.stats.ReaderStatsScreen
 import com.shubham.bookreader.screens.update.BookUpdateScreen
 
 
@@ -37,7 +40,7 @@ fun ReaderNavigation() {
 
         composable(ReaderScreens.ReaderHomeScreen.name) {
             val homeViewModel = hiltViewModel<HomeScreenViewModel>()
-            Home(navController = navController, viewModel = homeViewModel)
+            ReaderHomeScreen(navController = navController, viewModel = homeViewModel)
         }
 
         composable(ReaderScreens.SearchScreen.name) {
