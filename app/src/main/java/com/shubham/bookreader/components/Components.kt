@@ -274,7 +274,7 @@ fun ReaderAppBar(
 ) {
 
     TopAppBar(title = {
-        Row(verticalAlignment = Alignment.CenterVertically){
+        Row(verticalAlignment = Alignment.CenterVertically,modifier = Modifier.padding(end = 24.dp)){
             if (showProfile) {
                 Icon(imageVector = Icons.Default.Favorite,
                     contentDescription = "Logo Icon",
@@ -289,7 +289,7 @@ fun ReaderAppBar(
                     tint = Color.Red.copy(alpha = 0.7f),
                     modifier = Modifier.clickable { onBackArrowClicked.invoke() })
             }
-            Spacer(modifier = Modifier.width(40.dp) )
+            Spacer(modifier = Modifier.width(20.dp) )
             Text(text = title,
                 color = Color.Red.copy(alpha = 0.7f),
                 style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
@@ -305,7 +305,7 @@ fun ReaderAppBar(
                     .signOut().run {
                         navController.navigate(ReaderScreens.LoginScreen.name)
                     }
-            }) {
+            },modifier = Modifier.padding(end = 16.dp)) {
                 if (showProfile) Row() {
                     Icon(imageVector = Icons.Filled.Logout ,
                         contentDescription = "Logout" ,

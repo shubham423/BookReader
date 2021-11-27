@@ -32,8 +32,6 @@ fun ReaderHomeScreen(navController: NavController,
 ) {
     Scaffold(topBar = {
         ReaderAppBar(title = "A.Reader", navController = navController )
-
-
     },
         floatingActionButton = {
             FABContent{
@@ -49,8 +47,6 @@ fun ReaderHomeScreen(navController: NavController,
         }
 
     }
-
-
 }
 
 @Composable
@@ -75,8 +71,8 @@ fun HomeContent(navController: NavController, viewModel: HomeScreenViewModel) {
         "N/A"
     Column(Modifier.padding(2.dp),
         verticalArrangement = Arrangement.Top) {
-        Row(modifier = Modifier.align(alignment = Alignment.Start)) {
-            TitleSection(label = "Your reading \n " + " activity right now...")
+        Row(modifier = Modifier.align(alignment = Alignment.Start).padding(start = 8.dp)) {
+            TitleSection(label = "Your reading\n" + "activity right now...")
             Spacer(modifier = Modifier.fillMaxWidth(0.7f))
             Column {
                 Icon(
@@ -95,7 +91,7 @@ fun HomeContent(navController: NavController, viewModel: HomeScreenViewModel) {
                     fontSize = 15.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Clip)
-                Divider()
+                Divider(startIndent = 2.dp)
             }
 
 
@@ -170,8 +166,6 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>,
 
 
     }
-
-
 }
 
 
