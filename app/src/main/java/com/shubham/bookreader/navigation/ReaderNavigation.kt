@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.shubham.bookreader.screens.ReaderSplashScreen
+import com.shubham.bookreader.screens.splash.ReaderSplashScreen
 import com.shubham.bookreader.screens.details.BookDetailsScreen
 import com.shubham.bookreader.screens.home.HomeScreenViewModel
 import com.shubham.bookreader.screens.home.ReaderHomeScreen
