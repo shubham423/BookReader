@@ -35,20 +35,16 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
 @ExperimentalComposeUiApi
 @Composable
 fun ReaderApp() {
-    Surface(
-        color = MaterialTheme.colors.background,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ReaderNavigation()
-        }
-    }
+
+    Surface(color = MaterialTheme.colors.background,
+        modifier = Modifier.fillMaxSize(), content = {
+            Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                ReaderNavigation()
+
+            }
+        })
 
 }

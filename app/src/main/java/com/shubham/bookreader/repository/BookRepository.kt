@@ -1,6 +1,7 @@
 package com.shubham.bookreader.repository
 
 
+import android.util.Log
 import com.shubham.bookreader.data.Resource
 import com.shubham.bookreader.model.Item
 import com.shubham.bookreader.network.BooksApi
@@ -18,6 +19,7 @@ class BookRepository @Inject constructor(private val api: BooksApi) {
                Resource.Success(data = itemList)
 
           }catch (exception: Exception) {
+               Log.d("repository","exception is ${exception.localizedMessage}")
                Resource.Error(message = exception.message.toString())
           }
 

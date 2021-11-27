@@ -1,5 +1,6 @@
 package com.shubham.bookreader.screens.search
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,7 +29,6 @@ import com.shubham.bookreader.components.InputField
 import com.shubham.bookreader.components.ReaderAppBar
 import com.shubham.bookreader.model.Item
 import com.shubham.bookreader.navigation.ReaderScreens
-
 
 @ExperimentalComposeUiApi
 @Composable
@@ -67,8 +67,7 @@ fun SearchScreen(navController: NavController,
 
 @Composable
 fun BookList(navController: NavController,
-             viewModel: BooksSearchViewModel = hiltViewModel()
-) {
+             viewModel: BooksSearchViewModel = hiltViewModel()) {
 
 
     val listOfBooks = viewModel.list
@@ -82,10 +81,11 @@ fun BookList(navController: NavController,
         }
 
     }else {
+        Log.d("SearchScreen","$listOfBooks")
         LazyColumn(modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(16.dp)
-        ){
+            contentPadding = PaddingValues(16.dp)){
             items(items = listOfBooks) { book ->
+                Log.d("SearchScreen inside","$listOfBooks and $book")
                 BookRow(book, navController)
 
             }
@@ -98,8 +98,7 @@ fun BookList(navController: NavController,
 @Composable
 fun BookRow(
     book: Item,
-    navController: NavController
-) {
+    navController: NavController) {
     Card(modifier = Modifier
         .clickable {
             navController.navigate(ReaderScreens.DetailScreen.name + "/${book.id}")
@@ -142,11 +141,6 @@ fun BookRow(
                     overflow = TextOverflow.Clip,
                     fontStyle = FontStyle.Italic,
                     style = MaterialTheme.typography.caption)
-
-
-
-
-
 
             }
 

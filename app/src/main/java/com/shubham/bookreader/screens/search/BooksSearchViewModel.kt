@@ -17,36 +17,40 @@ import javax.inject.Inject
 @HiltViewModel
 class BooksSearchViewModel @Inject constructor(private val repository: BookRepository)
     : ViewModel() {
-        var list: List<Item> by mutableStateOf(listOf())
-      var isLoading: Boolean by mutableStateOf(true)
+    var list: List<Item> by mutableStateOf(listOf())
+    var isLoading: Boolean by mutableStateOf(true)
+
     init {
         loadBooks()
     }
 
     private fun loadBooks() {
-        searchBooks("flutter")
+        searchBooks("android")
     }
 
-     fun searchBooks(query: String) {
+    fun searchBooks(query: String) {
         viewModelScope.launch(Dispatchers.Default) {
 
-             if (query.isEmpty()){
-                 return@launch
-             }
+            if (query.isEmpty()) {
+                return@launch
+            }
             try {
-                when(val response = repository.getBooks(query)) {
-                     is Resource.Success -> {
-                          list = response.data!!
-                         if (list.isNotEmpty()) isLoading = false
-                     }
+                when (val response = repository.getBooks(query)) {
+                    is Resource.Success -> {
+                        list = response.data!!
+
+                        if (list.isNotEmpty()) isLoading = false
+                    }
                     is Resource.Error -> {
                         isLoading = false
-                        Log.e("Network", "searchBooks: Failed getting books", )
+                        Log.e("Network", "searchBooks: Failed getting books ")
                     }
-                    else -> {isLoading = false}
+                    else -> {
+                        isLoading = false
+                    }
                 }
 
-            }catch (exception: Exception){
+            } catch (exception: Exception) {
                 isLoading = false
                 Log.d("Network", "searchBooks: ${exception.message.toString()}")
             }
@@ -55,6 +59,4 @@ class BooksSearchViewModel @Inject constructor(private val repository: BookRepos
 
 
     }
-
-
 }
