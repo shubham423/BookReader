@@ -161,10 +161,7 @@ fun BookRating(score: Double = 4.5) {
             Text(text = score.toString(), style = MaterialTheme.typography.subtitle1)
 
         }
-
     }
-
-
 }
 
 @Composable
@@ -226,9 +223,11 @@ fun ListCard(book: MBook,
             verticalAlignment = Alignment.Bottom) {
             isStartedReading.value = book.startedReading != null
 
-
+            val context = LocalContext.current
             RoundedButton(label = if (isStartedReading.value)  "Reading" else "Not Yet",
-                radius = 70)
+                radius = 70){
+                showToast(context,"button clicked")
+            }
 
         }
     }

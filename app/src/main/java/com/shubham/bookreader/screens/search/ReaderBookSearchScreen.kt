@@ -76,7 +76,7 @@ fun BookList(navController: NavController,
             modifier = Modifier.padding(end = 2.dp),
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically) {
-            LinearProgressIndicator()
+            LinearProgressIndicator(modifier = Modifier.padding(start=28.dp))
             Text(text = "Loading...")
         }
 

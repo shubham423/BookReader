@@ -112,19 +112,15 @@ fun HomeContent(navController: NavController, viewModel: HomeScreenViewModel) {
 @Composable
 fun BookListArea(listOfBooks: List<MBook>,
                  navController: NavController) {
+
     val addedBooks = listOfBooks.filter { mBook ->
         mBook.startedReading == null && mBook.finishedReading == null
     }
-
-
 
     HorizontalScrollableComponent(addedBooks){
         navController.navigate(ReaderScreens.UpdateScreen.name +"/$it")
 
     }
-
-
-
 }
 
 @Composable
@@ -138,7 +134,7 @@ fun HorizontalScrollableComponent(listOfBooks: List<MBook>,
         .heightIn(280.dp)
         .horizontalScroll(scrollState)) {
         if (viewModel.data.value.loading == true) {
-            LinearProgressIndicator()
+            LinearProgressIndicator(modifier = Modifier.padding(start=28.dp))
 
         }else {
             if (listOfBooks.isNullOrEmpty()){

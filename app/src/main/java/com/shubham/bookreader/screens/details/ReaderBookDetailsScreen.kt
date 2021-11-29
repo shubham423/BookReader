@@ -59,7 +59,7 @@ fun BookDetailsScreen(navController: NavController,
 
                 if (bookInfo.data == null) {
                     Row() {
-                        LinearProgressIndicator()
+                        LinearProgressIndicator(modifier = Modifier.padding(start=28.dp))
                         Text(text = "Loading...")
                     }
 

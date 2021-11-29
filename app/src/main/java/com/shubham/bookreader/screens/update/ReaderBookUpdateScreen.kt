@@ -71,7 +71,7 @@ fun BookUpdateScreen(navController: NavHostController,
             ) {
                 Log.d("INFO", "BookUpdateScreen: ${viewModel.data.value.data.toString()}")
                 if (bookInfo.loading == true) {
-                    LinearProgressIndicator()
+                    LinearProgressIndicator(modifier = Modifier.padding(start=28.dp))
                     bookInfo.loading = false
 
                 }else {

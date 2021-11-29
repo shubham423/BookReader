@@ -102,7 +102,7 @@ fun ReaderStatsScreen(navController: NavController,
                 }
 
                 if (viewModel.data.value.loading == true) {
-                    LinearProgressIndicator()
+                    LinearProgressIndicator(modifier = Modifier.padding(start=28.dp))
                 }else {
                     Divider()
                     LazyColumn(modifier = Modifier
